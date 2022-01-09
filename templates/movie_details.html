@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ movie.title }} - Details{% endblock %}
+
+{% block body %}
+  {% if 'user' in session %}
+  <h2>Add your rating</h2>
+
+    <form method="POST" action="/ratings">
+      <label for="field-score">Score</label>
+      <input id="field-score" class="form-control" type="text" name="score">
+
+      <input id="field-movie_id" class="form-control" value="{{movie}}" type="hidden" name="{{movie}}">
+
+
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary">
+      </div>
+    </form>
+
+  {% endif %}
+
+<h1>{{ movie.title }}</h1>
+
+<p>
+  {{ movie.overview }}
+</p>
+
+<img src="{{ movie.poster_path }}">
+{% endblock %}
